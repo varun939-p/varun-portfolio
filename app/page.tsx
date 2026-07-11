@@ -5,7 +5,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { 
   Github, Linkedin, Mail, ExternalLink, Terminal, 
-  Brain, ChevronRight, FileText, Code2, GraduationCap, BookOpen, Award
+  Brain, ChevronRight, FileText, Code2, GraduationCap, BookOpen, Award, Cpu, ShieldCheck
 } from "lucide-react";
 import HeroCanvas from "@/components/Visuals/HeroCanvas";
 
@@ -52,7 +52,7 @@ export default function Portfolio() {
         });
       });
 
-      // 4. Guaranteed Reveal Animations (Fixing the hidden content issue)
+      // 4. Guaranteed Reveal Animations
       gsap.utils.toArray<HTMLElement>(".reveal").forEach((el) => {
         gsap.fromTo(el, 
           { y: 60, autoAlpha: 0 },
@@ -60,7 +60,7 @@ export default function Portfolio() {
         );
       });
 
-      // 5. High-End Education Stagger (Guaranteed to show)
+      // 5. High-End Education Stagger
       gsap.fromTo(".edu-card", 
         { y: 100, autoAlpha: 0, rotateX: -15, scale: 0.9 },
         { 
@@ -98,9 +98,9 @@ export default function Portfolio() {
           <a href="#education" className="hover:text-purple transition-colors">EDUCATION</a>
         </div>
         <div className="flex gap-5 items-center">
-          <a href="mailto:varunparuchuri1@gmail.com" className="text-slate-300 hover:text-cyan hover:-translate-y-1 transition-transform"><Mail size={20} /></a>
-          <a href="https://github.com/varun939-p" target="_blank" rel="noreferrer" className="text-slate-300 hover:text-cyan hover:-translate-y-1 transition-transform"><Github size={20} /></a>
-          <a href="https://www.linkedin.com/in/varun-paruchuri" target="_blank" rel="noreferrer" className="text-slate-300 hover:text-cyan hover:-translate-y-1 transition-transform"><Linkedin size={20} /></a>
+          <a href="mailto:varunparuchuri1@gmail.com" className="text-slate-300 hover:text-cyan hover:-translate-y-1 transition-transform" title="Email"><Mail size={20} /></a>
+          <a href="https://github.com/varun939-p" target="_blank" rel="noreferrer" className="text-slate-300 hover:text-cyan hover:-translate-y-1 transition-transform" title="GitHub"><Github size={20} /></a>
+          <a href="https://www.linkedin.com/in/varun-paruchuri" target="_blank" rel="noreferrer" className="text-slate-300 hover:text-cyan hover:-translate-y-1 transition-transform" title="LinkedIn"><Linkedin size={20} /></a>
         </div>
       </nav>
 
@@ -109,14 +109,14 @@ export default function Portfolio() {
         <div ref={heroTextRef} className="max-w-4xl z-10 pt-20">
           <div className="hero-el font-mono text-cyan text-sm tracking-[0.4em] mb-6 uppercase flex items-center gap-3">
             <div className="w-10 h-[2px] bg-cyan shadow-[0_0_10px_#00d2ff]" />
-            Software Engineer // ML & Backend Systems
+            Software Engineer // AI-ML & Backend Systems
           </div>
           <h1 className="hero-el text-6xl md:text-8xl font-bold tracking-tighter leading-[0.9] mb-8 text-white">
             Architecting <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan via-blue-400 to-purple drop-shadow-[0_0_20px_rgba(0,210,255,0.4)]">Intelligent Logic.</span>
           </h1>
           <p className="hero-el text-slate-300 text-lg md:text-xl max-w-xl leading-relaxed mb-10 border-l-2 border-cyan/40 pl-6 backdrop-blur-md bg-white/[0.02] rounded-r-2xl py-4 shadow-sm">
-            Specializing in building REST APIs and backend services using Python, FastAPI, and Flask. Transforming complex data into actionable machine learning workflows.
+            Specializing in enterprise backend systems, Python APIs, and autonomous AI-driven code analysis. Transforming structured data and complex architectures into scalable software solutions.
           </p>
           <div className="hero-el flex flex-wrap gap-5">
             <a href="mailto:varunparuchuri1@gmail.com" className="px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-cyan hover:shadow-[0_0_40px_rgba(0,210,255,0.6)] transition-all duration-300 flex items-center gap-2">
@@ -150,11 +150,11 @@ export default function Portfolio() {
         </div>
 
         <div>
-          <h2 className="text-4xl md:text-5xl font-extrabold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-cyan to-purple drop-shadow-[0_0_15px_rgba(157,80,187,0.3)]">
+          <h2 className="text-4xl md:text-5xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-cyan to-purple drop-shadow-[0_0_15px_rgba(157,80,187,0.3)]">
             VARUN PARUCHURI
           </h2>
-          <p className="text-slate-300 text-lg leading-relaxed mb-8">
-            I am a Software Engineer currently completing my B.Tech in Computer Science and Engineering at <span className="text-cyan font-semibold">Malla Reddy University</span>. I have hands-on experience developing data pipelines, SQL databases, and machine learning workflows using Pandas and NumPy. I am comfortable coding, debugging, and testing in Linux environments using Agile methodologies.
+          <p className="text-slate-300 text-base lg:text-lg leading-relaxed mb-8">
+            I&apos;m a Software Engineer completing my B.Tech in Computer Science and Engineering at <span className="text-cyan font-semibold">Malla Reddy University</span>. I build backend systems and REST APIs in Python using FastAPI and Flask, and I&apos;ve shipped full-stack projects end to end — most recently <span className="text-white font-medium">AetherOps</span>, an AI-powered codebase analyzer built with Next.js and Gemini that automatically detects and fixes code issues. I&apos;m comfortable across the stack, from React on the frontend to PostgreSQL on the backend.
           </p>
           
           <div className="grid grid-cols-2 gap-5">
@@ -165,8 +165,8 @@ export default function Portfolio() {
             </div>
             <div className="apple-card p-6 glass-card border-t-2 border-t-purple bg-gradient-to-b from-white/[0.05] to-transparent shadow-xl">
               <div className="text-purple mb-2 font-mono text-xs uppercase tracking-wider">Tech Stack</div>
-              <div className="font-bold text-lg text-white">Python / Java</div>
-              <div className="text-slate-400 text-sm mt-1">FastAPI, Flask, React</div>
+              <div className="font-bold text-lg text-white">Python, TypeScript</div>
+              <div className="text-slate-400 text-sm mt-1">FastAPI, Next.js, PostgreSQL</div>
             </div>
           </div>
         </div>
@@ -183,7 +183,7 @@ export default function Portfolio() {
             <div className="relative group">
               <div className="absolute -left-[41px] top-1 w-5 h-5 bg-black border-4 border-cyan rounded-full group-hover:bg-cyan group-hover:shadow-[0_0_25px_#00d2ff] transition-all duration-300" />
               <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-3">
-                <h3 className="text-2xl font-bold text-white group-hover:text-cyan transition-colors">Data Science / AIML Intern</h3>
+                <h3 className="text-2xl font-bold text-white group-hover:text-cyan transition-colors">Data Science / AI-ML Intern</h3>
                 <span className="text-cyan font-mono text-xs uppercase tracking-widest bg-cyan/10 border border-cyan/20 px-4 py-1.5 rounded-full mt-2 md:mt-0 w-fit">Aug 2025 - Sep 2025</span>
               </div>
               <div className="text-slate-300 mb-6 font-medium tracking-wide flex items-center gap-2">
@@ -191,9 +191,9 @@ export default function Portfolio() {
               </div>
               <div className="apple-card p-8 glass-card border-l-4 border-l-cyan hover:bg-white/[0.03] transition-colors shadow-lg">
                 <ul className="text-slate-300 space-y-4 text-sm leading-relaxed">
-                  <li className="flex items-start gap-3"><span className="text-cyan mt-1 text-lg">▹</span> Designed and optimized ML preprocessing pipelines in Python, boosting model accuracy and efficiency.</li>
+                  <li className="flex items-start gap-3"><span className="text-cyan mt-1 text-lg">▹</span> Designed and optimized ML preprocessing pipelines in Python, boosting overall model accuracy and efficiency.</li>
                   <li className="flex items-start gap-3"><span className="text-cyan mt-1 text-lg">▹</span> Performed data cleaning and feature engineering to extract actionable insights from structured datasets.</li>
-                  <li className="flex items-start gap-3"><span className="text-cyan mt-1 text-lg">▹</span> Automated validation tasks with scripts, cutting manual effort by 30% and ensuring data quality.</li>
+                  <li className="flex items-start gap-3"><span className="text-cyan mt-1 text-lg">▹</span> Automated validation tasks with scripts, cutting manual effort by 30% and ensuring strict data quality.</li>
                 </ul>
               </div>
             </div>
@@ -210,45 +210,59 @@ export default function Portfolio() {
           </div>
           
           <div className="grid md:grid-cols-2 gap-10">
-            {/* Project 1 */}
-            <div className="apple-card glass-card p-10 flex flex-col h-full shadow-2xl border-t-4 border-t-transparent hover:border-t-purple transition-all bg-gradient-to-b from-white/[0.02] to-transparent">
+            
+            {/* Project 1: AetherOps (CLICKABLE DASHBOARD CARD) */}
+            <a 
+              href="https://aetherops-flame.vercel.app/" 
+              target="_blank" 
+              rel="noreferrer"
+              className="apple-card glass-card p-10 flex flex-col h-full shadow-2xl border-t-4 border-t-transparent hover:border-t-cyan transition-all duration-500 bg-gradient-to-b from-white/[0.03] to-transparent group cursor-pointer block hover:shadow-[0_20px_50px_rgba(0,210,255,0.25)]"
+            >
               <div className="flex justify-between items-start mb-8">
-                <div className="p-4 bg-purple/10 rounded-2xl shadow-[0_0_20px_rgba(157,80,187,0.2)]">
-                  <Brain className="text-purple" size={32} />
+                <div className="p-4 bg-cyan/10 rounded-2xl shadow-[0_0_25px_rgba(0,210,255,0.25)] group-hover:shadow-[0_0_35px_rgba(0,210,255,0.6)] group-hover:bg-cyan/20 transition-all">
+                  <Code2 className="text-cyan group-hover:scale-110 transition-transform" size={32} />
                 </div>
-                <ExternalLink className="text-slate-500 hover:text-purple transition-colors cursor-pointer" />
+                <ExternalLink className="text-slate-500 group-hover:text-cyan group-hover:scale-110 transition-all" size={24} />
               </div>
-              <h3 className="text-2xl font-bold mb-2 text-white">Intelligent Resume Parser (NLP)</h3>
-              <div className="text-slate-500 font-mono text-xs mb-5 tracking-widest uppercase">Nov 2024 - Dec 2024</div>
+              
+              <h3 className="text-2xl font-bold mb-2 text-white group-hover:text-cyan transition-colors">
+                AetherOps: Real-Time SRE Codebase Analyzer
+              </h3>
+              <div className="text-slate-500 font-mono text-xs mb-5 tracking-widest uppercase">
+                MAY 2026
+              </div>
+              
               <p className="text-slate-300 text-sm mb-8 flex-grow leading-relaxed">
-                Collaborated with a team to build an NLP-based resume screening system with a Flask REST API. Utilized TF-IDF and cosine-similarity ranking to process and validate 2,000+ resumes from Kaggle, improving matching accuracy by 12%.
+                Architected an enterprise-grade SRE codebase analyzer using Next.js, TypeScript, and Drizzle ORM with Neon PostgreSQL to monitor repository health in real time. Built an autonomous AI code-review pipeline (Gemini 1.5 Pro) that scans structures, flags vulnerabilities, and renders side-by-side auto-remediations at 60 FPS.
               </p>
-              <div className="flex gap-3 flex-wrap mt-auto">
+              
+              <div className="flex gap-2.5 flex-wrap mt-auto pt-4 border-t border-white/5">
+                {['Next.js', 'TypeScript', 'Drizzle ORM', 'PostgreSQL', 'Gemini AI'].map(tag => (
+                  <span key={tag} className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs font-mono text-slate-300 group-hover:border-cyan/50 group-hover:bg-cyan/10 transition-colors shadow-sm">{tag}</span>
+                ))}
+              </div>
+            </a>
+
+            {/* Project 2: Intelligent Resume Parser (NLP) */}
+            <div className="apple-card glass-card p-10 flex flex-col h-full shadow-2xl border-t-4 border-t-transparent hover:border-t-purple transition-all duration-500 bg-gradient-to-b from-white/[0.02] to-transparent group">
+              <div className="flex justify-between items-start mb-8">
+                <div className="p-4 bg-purple/10 rounded-2xl shadow-[0_0_20px_rgba(157,80,187,0.2)] group-hover:shadow-[0_0_35px_rgba(157,80,187,0.6)] group-hover:bg-purple/20 transition-all">
+                  <Brain className="text-purple group-hover:scale-110 transition-transform" size={32} />
+                </div>
+                <ExternalLink className="text-slate-500 group-hover:text-purple transition-colors cursor-pointer" />
+              </div>
+              <h3 className="text-2xl font-bold mb-2 text-white group-hover:text-purple transition-colors">Intelligent Resume Parser (NLP)</h3>
+              <div className="text-slate-500 font-mono text-xs mb-5 tracking-widest uppercase">NOV 2024 - DEC 2024</div>
+              <p className="text-slate-300 text-sm mb-8 flex-grow leading-relaxed">
+                Collaborated with a team to build an NLP-based resume screening system with a Flask REST API. Utilized TF-IDF and cosine-similarity ranking to process and validate 2,000+ resumes from Kaggle datasets, improving candidate matching accuracy by 12%.
+              </p>
+              <div className="flex gap-2.5 flex-wrap mt-auto pt-4 border-t border-white/5">
                 {['NLP', 'Python', 'Flask', 'Pytest'].map(tag => (
-                  <span key={tag} className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs font-mono text-slate-300">{tag}</span>
+                  <span key={tag} className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs font-mono text-slate-300 group-hover:border-purple/50 group-hover:bg-purple/10 transition-colors shadow-sm">{tag}</span>
                 ))}
               </div>
             </div>
 
-            {/* Project 2 */}
-            <div className="apple-card glass-card p-10 flex flex-col h-full shadow-2xl border-t-4 border-t-transparent hover:border-t-cyan transition-all bg-gradient-to-b from-white/[0.02] to-transparent">
-              <div className="flex justify-between items-start mb-8">
-                <div className="p-4 bg-cyan/10 rounded-2xl shadow-[0_0_20px_rgba(0,210,255,0.2)]">
-                  <Code2 className="text-cyan" size={32} />
-                </div>
-                <ExternalLink className="text-slate-500 hover:text-cyan transition-colors cursor-pointer" />
-              </div>
-              <h3 className="text-2xl font-bold mb-2 text-white">Sentinel Sense</h3>
-              <div className="text-slate-500 font-mono text-xs mb-5 tracking-widest uppercase">May 2022 - Jun 2022</div>
-              <p className="text-slate-300 text-sm mb-8 flex-grow leading-relaxed">
-                Developed a real-time sentiment analysis application using an LSTM model to classify IMDb reviews. Handled text preprocessing, tokenization, and feature extraction, deployed through a Flask and React web interface.
-              </p>
-              <div className="flex gap-3 flex-wrap mt-auto">
-                {['LSTM', 'React', 'Flask', 'Agile'].map(tag => (
-                  <span key={tag} className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs font-mono text-slate-300">{tag}</span>
-                ))}
-              </div>
-            </div>
           </div>
         </div>
       </section>
