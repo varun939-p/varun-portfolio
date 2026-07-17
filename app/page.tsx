@@ -5,7 +5,9 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { 
   Github, Linkedin, Mail, ExternalLink, Terminal, 
-  Brain, ChevronRight, FileText, Code2, GraduationCap, BookOpen, Award, Cpu, ShieldCheck
+  Brain, ChevronRight, FileText, Code2, GraduationCap, 
+  BookOpen, Award, Cpu, ShieldCheck, Sparkles, Layers, 
+  Database, Bot, Wrench, Zap
 } from "lucide-react";
 import HeroCanvas from "@/components/Visuals/HeroCanvas";
 
@@ -38,7 +40,7 @@ export default function Portfolio() {
         });
       }
 
-      // 3. Apple-Style Premium Card 3D Hover Tracking for ALL Cards
+      // 3. Apple-Style Premium Card 3D Hover Tracking for ALL Cards (Projects, Skills, Education)
       const interactiveCards = gsap.utils.toArray<HTMLElement>(".apple-card");
       interactiveCards.forEach((card) => {
         card.addEventListener("mousemove", (e) => {
@@ -60,12 +62,12 @@ export default function Portfolio() {
         );
       });
 
-      // 5. High-End Education Stagger
-      gsap.fromTo(".edu-card", 
-        { y: 100, autoAlpha: 0, rotateX: -15, scale: 0.9 },
+      // 5. High-End Education & Skill Cards Stagger
+      gsap.fromTo(".stagger-card", 
+        { y: 80, autoAlpha: 0, rotateX: -10, scale: 0.95 },
         { 
-          scrollTrigger: { trigger: "#education", start: "top 80%" },
-          y: 0, autoAlpha: 1, rotateX: 0, scale: 1, duration: 1.5, stagger: 0.2, ease: "expo.out" 
+          scrollTrigger: { trigger: ".stagger-container", start: "top 80%" },
+          y: 0, autoAlpha: 1, rotateX: 0, scale: 1, duration: 1.2, stagger: 0.15, ease: "expo.out" 
         }
       );
 
@@ -95,6 +97,7 @@ export default function Portfolio() {
           <a href="#about" className="hover:text-cyan transition-colors">ABOUT</a>
           <a href="#experience" className="hover:text-cyan transition-colors">EXPERIENCE</a>
           <a href="#projects" className="hover:text-cyan transition-colors">PROJECTS</a>
+          <a href="#skills" className="hover:text-cyan transition-colors">SKILLS</a>
           <a href="#education" className="hover:text-purple transition-colors">EDUCATION</a>
         </div>
         <div className="flex gap-5 items-center">
@@ -201,11 +204,14 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* Projects */}
+      {/* Featured Projects */}
       <section id="projects" className="reveal py-24 px-6 md:px-24 bg-gradient-to-b from-transparent to-black/90 border-t border-white/5 relative">
         <div className="max-w-7xl mx-auto">
           <div className="flex justify-between items-end mb-16">
-            <h2 className="text-4xl font-bold text-white">Featured Projects</h2>
+            <div>
+              <div className="font-mono text-cyan text-xs tracking-widest uppercase mb-2">SYSTEM DEPLOYMENTS</div>
+              <h2 className="text-4xl font-bold text-white">Featured Projects</h2>
+            </div>
             <div className="hidden md:block h-px bg-gradient-to-r from-transparent via-purple/40 to-transparent flex-1 mx-10 mb-4" />
           </div>
           
@@ -243,22 +249,153 @@ export default function Portfolio() {
               </div>
             </a>
 
-            {/* Project 2: Intelligent Resume Parser (NLP) */}
-            <div className="apple-card glass-card p-10 flex flex-col h-full shadow-2xl border-t-4 border-t-transparent hover:border-t-purple transition-all duration-500 bg-gradient-to-b from-white/[0.02] to-transparent group">
+            {/* Project 2: Resume Screening & ATS Match Engine (NEW CLICKABLE DASHBOARD CARD) */}
+            <a 
+              href="https://keka-resume-intelligence-ats-platfo-mauve.vercel.app/" 
+              target="_blank" 
+              rel="noreferrer"
+              className="apple-card glass-card p-10 flex flex-col h-full shadow-2xl border-t-4 border-t-transparent hover:border-t-purple transition-all duration-500 bg-gradient-to-b from-white/[0.03] to-transparent group cursor-pointer block hover:shadow-[0_20px_50px_rgba(157,80,187,0.25)]"
+            >
               <div className="flex justify-between items-start mb-8">
                 <div className="p-4 bg-purple/10 rounded-2xl shadow-[0_0_20px_rgba(157,80,187,0.2)] group-hover:shadow-[0_0_35px_rgba(157,80,187,0.6)] group-hover:bg-purple/20 transition-all">
                   <Brain className="text-purple group-hover:scale-110 transition-transform" size={32} />
                 </div>
-                <ExternalLink className="text-slate-500 group-hover:text-purple transition-colors cursor-pointer" />
+                <ExternalLink className="text-slate-500 group-hover:text-purple group-hover:scale-110 transition-all" size={24} />
               </div>
-              <h3 className="text-2xl font-bold mb-2 text-white group-hover:text-purple transition-colors">Intelligent Resume Parser (NLP)</h3>
-              <div className="text-slate-500 font-mono text-xs mb-5 tracking-widest uppercase">NOV 2024 - DEC 2024</div>
-              <p className="text-slate-300 text-sm mb-8 flex-grow leading-relaxed">
-                Collaborated with a team to build an NLP-based resume screening system with a Flask REST API. Utilized TF-IDF and cosine-similarity ranking to process and validate 2,000+ resumes from Kaggle datasets, improving candidate matching accuracy by 12%.
-              </p>
+              <h3 className="text-2xl font-bold mb-2 text-white group-hover:text-purple transition-colors">
+                Resume Screening & ATS Match Engine
+              </h3>
+              <div className="text-slate-500 font-mono text-xs mb-5 tracking-widest uppercase">JUL 2026</div>
+              <ul className="text-slate-300 text-sm mb-8 flex-grow space-y-3 leading-relaxed">
+                <li className="flex items-start gap-2"><span className="text-purple">▹</span> Built a resume parsing and deduplication service in Python/FastAPI that extracts candidate data from PDF/TXT, flagging duplicates via SHA-256 hashing and fuzzy scoring (&gt;88% threshold).</li>
+                <li className="flex items-start gap-2"><span className="text-purple">▹</span> Engineered a dual-mode scoring engine routing to Groq (LLaMA 3.3 70B) or GPT-4o-mini for JD matching, with local offline heuristic fallbacks.</li>
+                <li className="flex items-start gap-2"><span className="text-purple">▹</span> Deployed as a serverless FastAPI app on Vercel utilizing `/tmp` directory architecture for real-time asset processing.</li>
+              </ul>
               <div className="flex gap-2.5 flex-wrap mt-auto pt-4 border-t border-white/5">
-                {['NLP', 'Python', 'Flask', 'Pytest'].map(tag => (
+                {['Python', 'FastAPI', 'Groq AI', 'LLaMA 3.3', 'Vercel Serverless'].map(tag => (
                   <span key={tag} className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs font-mono text-slate-300 group-hover:border-purple/50 group-hover:bg-purple/10 transition-colors shadow-sm">{tag}</span>
+                ))}
+              </div>
+            </a>
+
+            {/* Project 3: AI-Powered Job Search Automation Pipeline (NEW FULL-WIDTH 3D CARD) */}
+            <div className="apple-card glass-card p-10 flex flex-col h-full shadow-2xl border-t-4 border-t-transparent hover:border-t-blue-500 transition-all duration-500 bg-gradient-to-b from-white/[0.02] to-transparent group md:col-span-2">
+              <div className="flex justify-between items-start mb-8">
+                <div className="p-4 bg-blue-500/10 rounded-2xl shadow-[0_0_20px_rgba(59,130,246,0.2)] group-hover:shadow-[0_0_35px_rgba(59,130,246,0.6)] group-hover:bg-blue-500/20 transition-all">
+                  <Bot className="text-blue-500 group-hover:scale-110 transition-transform" size={32} />
+                </div>
+                <span className="font-mono text-xs text-blue-400 bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-full">AUTOMATION WORKFLOW</span>
+              </div>
+              <h3 className="text-2xl font-bold mb-2 text-white group-hover:text-blue-400 transition-colors">
+                AI-Powered Job Search Automation Pipeline
+              </h3>
+              <div className="text-slate-500 font-mono text-xs mb-5 tracking-widest uppercase">JUL 2026</div>
+              
+              <div className="grid md:grid-cols-3 gap-6 mb-8 flex-grow">
+                <div className="bg-white/[0.02] p-5 rounded-xl border border-white/5">
+                  <div className="text-blue-400 font-bold text-sm mb-2">12+ Platform Sourcing</div>
+                  <p className="text-slate-300 text-xs leading-relaxed">Built two scheduled workflows on Make.com integrating SerpApi, Groq (LLaMA 3.3 70B), Google Sheets, and Telegram Bot API to source, deduplicate, and screen job postings.</p>
+                </div>
+                <div className="bg-white/[0.02] p-5 rounded-xl border border-white/5">
+                  <div className="text-blue-400 font-bold text-sm mb-2">Auto-Tailored Cover Letters</div>
+                  <p className="text-slate-300 text-xs leading-relaxed">Used an LLM to score each posting against a target candidate profile and automatically generate highly tailored cover letters, drastically reducing manual search effort.</p>
+                </div>
+                <div className="bg-white/[0.02] p-5 rounded-xl border border-white/5">
+                  <div className="text-blue-400 font-bold text-sm mb-2">Spam & Referral Filter</div>
+                  <p className="text-slate-300 text-xs leading-relaxed">Built a second AI workflow to classify referral-offer posts, filtering spam from genuine networking opportunities and pushing verified matches via instant Telegram alerts.</p>
+                </div>
+              </div>
+
+              <div className="flex gap-2.5 flex-wrap mt-auto pt-4 border-t border-white/5">
+                {['Make.com', 'Groq (LLaMA 3.3 70B)', 'SerpApi', 'Telegram Bot API', 'Google Sheets Integration'].map(tag => (
+                  <span key={tag} className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-lg text-xs font-mono text-slate-300 group-hover:border-blue-500/50 group-hover:bg-blue-500/10 transition-colors shadow-sm">{tag}</span>
+                ))}
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* NEW SECTION: 3D HOLOGRAPHIC SKILLS MATRIX */}
+      <section id="skills" className="reveal py-24 px-6 md:px-24 bg-black/80 backdrop-blur-3xl border-t border-white/10 relative overflow-hidden">
+        <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-gradient-to-r from-cyan/10 via-purple/10 to-blue-500/10 rounded-full blur-[160px] -z-10 animate-pulse" />
+        
+        <div className="max-w-7xl mx-auto stagger-container">
+          <div className="flex flex-col items-center text-center mb-16">
+            <div className="flex items-center gap-2 font-mono text-cyan text-xs tracking-[0.3em] uppercase mb-3 bg-cyan/10 px-4 py-1.5 rounded-full border border-cyan/20 shadow-[0_0_15px_rgba(0,210,255,0.2)]">
+              <Sparkles size={14} className="animate-spin" /> CORE COMPLIANCE MATRIX
+            </div>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-200 to-slate-400">
+              Technical Architecture & Skills
+            </h2>
+            <p className="text-slate-400 text-sm mt-3 max-w-xl">
+              Hover over category cubes to engage interactive 3D magnetic tracking and highlight core engineering competencies.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 perspective-[2000px]">
+            
+            {/* Box 1: Backend & APIs */}
+            <div className="stagger-card apple-card p-8 glass-card border border-white/10 rounded-3xl shadow-2xl bg-gradient-to-b from-white/[0.05] to-transparent group hover:border-cyan/60 transition-all duration-500">
+              <div className="p-3 bg-cyan/10 rounded-2xl w-fit mb-6 border border-cyan/20 group-hover:shadow-[0_0_25px_rgba(0,210,255,0.5)] transition-all">
+                <Database className="text-cyan group-hover:scale-110 transition-transform" size={28} />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan transition-colors">Backend & APIs</h3>
+              <p className="text-slate-400 text-xs mb-6 font-mono uppercase tracking-wider">Server Architecture</p>
+              <div className="flex flex-wrap gap-2">
+                {['Python', 'FastAPI', 'Flask', 'Node.js', 'REST APIs', 'PostgreSQL', 'Drizzle ORM', 'SQL Server'].map((skill) => (
+                  <span key={skill} className="px-3 py-1.5 bg-black/60 border border-white/10 rounded-xl text-xs font-mono text-slate-300 group-hover:border-cyan/40 group-hover:text-white group-hover:bg-cyan/10 transition-all shadow-md hover:scale-105 cursor-default">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Box 2: AI & Machine Learning */}
+            <div className="stagger-card apple-card p-8 glass-card border border-white/10 rounded-3xl shadow-2xl bg-gradient-to-b from-white/[0.05] to-transparent group hover:border-purple/60 transition-all duration-500">
+              <div className="p-3 bg-purple/10 rounded-2xl w-fit mb-6 border border-purple/20 group-hover:shadow-[0_0_25px_rgba(157,80,187,0.5)] transition-all">
+                <Brain className="text-purple group-hover:scale-110 transition-transform" size={28} />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple transition-colors">AI & Machine Learning</h3>
+              <p className="text-slate-400 text-xs mb-6 font-mono uppercase tracking-wider">Intelligence Layer</p>
+              <div className="flex flex-wrap gap-2">
+                {['Groq AI', 'LLaMA 3.3 70B', 'Gemini 1.5 Pro', 'OpenAI GPT-4o', 'Pandas & NumPy', 'NLP / TF-IDF', 'Cosine Sim', 'Data Cleaning'].map((skill) => (
+                  <span key={skill} className="px-3 py-1.5 bg-black/60 border border-white/10 rounded-xl text-xs font-mono text-slate-300 group-hover:border-purple/40 group-hover:text-white group-hover:bg-purple/10 transition-all shadow-md hover:scale-105 cursor-default">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Box 3: Frontend & Web */}
+            <div className="stagger-card apple-card p-8 glass-card border border-white/10 rounded-3xl shadow-2xl bg-gradient-to-b from-white/[0.05] to-transparent group hover:border-blue-500/60 transition-all duration-500">
+              <div className="p-3 bg-blue-500/10 rounded-2xl w-fit mb-6 border border-blue-500/20 group-hover:shadow-[0_0_25px_rgba(59,130,246,0.5)] transition-all">
+                <Layers className="text-blue-500 group-hover:scale-110 transition-transform" size={28} />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">Frontend & Web</h3>
+              <p className="text-slate-400 text-xs mb-6 font-mono uppercase tracking-wider">Client Interface</p>
+              <div className="flex flex-wrap gap-2">
+                {['TypeScript', 'JavaScript', 'Next.js 14', 'React.js', 'Tailwind CSS', 'GSAP 3D', 'File System API', 'SWR & SWR-Optimistic'].map((skill) => (
+                  <span key={skill} className="px-3 py-1.5 bg-black/60 border border-white/10 rounded-xl text-xs font-mono text-slate-300 group-hover:border-blue-500/40 group-hover:text-white group-hover:bg-blue-500/10 transition-all shadow-md hover:scale-105 cursor-default">
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+
+            {/* Box 4: DevOps & Automation */}
+            <div className="stagger-card apple-card p-8 glass-card border border-white/10 rounded-3xl shadow-2xl bg-gradient-to-b from-white/[0.05] to-transparent group hover:border-emerald-500/60 transition-all duration-500">
+              <div className="p-3 bg-emerald-500/10 rounded-2xl w-fit mb-6 border border-emerald-500/20 group-hover:shadow-[0_0_25px_rgba(16,185,129,0.5)] transition-all">
+                <Wrench className="text-emerald-500 group-hover:scale-110 transition-transform" size={28} />
+              </div>
+              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">DevOps & Tools</h3>
+              <p className="text-slate-400 text-xs mb-6 font-mono uppercase tracking-wider">Pipeline & OS</p>
+              <div className="flex flex-wrap gap-2">
+                {['Make.com', 'Git & GitHub', 'Linux / Bash', 'Vercel Serverless', 'SerpApi', 'Telegram API', 'Agile / SDLC', 'VS Code'].map((skill) => (
+                  <span key={skill} className="px-3 py-1.5 bg-black/60 border border-white/10 rounded-xl text-xs font-mono text-slate-300 group-hover:border-emerald-500/40 group-hover:text-white group-hover:bg-emerald-500/10 transition-all shadow-md hover:scale-105 cursor-default">
+                    {skill}
+                  </span>
                 ))}
               </div>
             </div>
@@ -272,7 +409,7 @@ export default function Portfolio() {
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan/5 rounded-full blur-[150px] -z-10 animate-[pulse_6s_ease-in-out_infinite]" />
         <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-purple/5 rounded-full blur-[150px] -z-10 animate-[pulse_8s_ease-in-out_infinite]" />
         
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto stagger-container">
           <div className="flex justify-center items-center mb-16 gap-4">
             <GraduationCap className="text-purple animate-bounce drop-shadow-[0_0_15px_rgba(157,80,187,0.5)]" size={40} />
             <h2 className="text-4xl md:text-5xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple to-cyan drop-shadow-lg">
@@ -283,7 +420,7 @@ export default function Portfolio() {
           <div className="grid md:grid-cols-3 gap-8 perspective-[2000px]">
             
             {/* Degree */}
-            <div className="edu-card apple-card relative p-8 glass-card border border-white/10 shadow-2xl overflow-hidden group">
+            <div className="stagger-card apple-card relative p-8 glass-card border border-white/10 shadow-2xl overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-cyan/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               <div className="relative z-10 flex flex-col items-center text-center h-full">
                 <div className="p-4 bg-black/50 rounded-full mb-6 border border-cyan/20 group-hover:border-cyan/50 group-hover:shadow-[0_0_30px_rgba(0,210,255,0.3)] transition-all duration-500">
@@ -299,7 +436,7 @@ export default function Portfolio() {
             </div>
 
             {/* Intermediate */}
-            <div className="edu-card apple-card relative p-8 glass-card border border-white/10 shadow-2xl overflow-hidden group">
+            <div className="stagger-card apple-card relative p-8 glass-card border border-white/10 shadow-2xl overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-purple/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               <div className="relative z-10 flex flex-col items-center text-center h-full">
                 <div className="p-4 bg-black/50 rounded-full mb-6 border border-purple/20 group-hover:border-purple/50 group-hover:shadow-[0_0_30px_rgba(157,80,187,0.3)] transition-all duration-500">
@@ -315,7 +452,7 @@ export default function Portfolio() {
             </div>
 
             {/* SSC */}
-            <div className="edu-card apple-card relative p-8 glass-card border border-white/10 shadow-2xl overflow-hidden group">
+            <div className="stagger-card apple-card relative p-8 glass-card border border-white/10 shadow-2xl overflow-hidden group">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
               <div className="relative z-10 flex flex-col items-center text-center h-full">
                 <div className="p-4 bg-black/50 rounded-full mb-6 border border-blue-500/20 group-hover:border-blue-500/50 group-hover:shadow-[0_0_30px_rgba(59,130,246,0.3)] transition-all duration-500">
