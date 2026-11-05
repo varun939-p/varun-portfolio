@@ -1,2 +1,11 @@
 node_modules/
 .next/
+
+# local-only: browser profiles from debugging (contain cookies/logins), test scratch, build info
+.chrome-debug-*/
+scratch/
+tsconfig.tsbuildinfo
+.playwright-mcp/
+# local AI tooling
+.claude/
+.mcp.json
